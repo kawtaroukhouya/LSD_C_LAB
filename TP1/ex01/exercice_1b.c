@@ -11,9 +11,18 @@ float *remontee(float A[N][N], float B[N], int n)
   */
 
   /******Implement the solution here******/
-  /***************************************/
-  
-  /***************************************/
+	float *x;
+	x=malloc(sizeof(float) * n);
+
+    x[n-1]=B[n-1]/A[n-1][n-1];
+     for(int i=n-2;i>=0;i--){
+	     float sum=0;
+	     for(int j=i;j<n;j++){
+		     sum=sum+A[i][j]*x[j];
+	     }
+	     x[i]=(B[i]-sum)/A[i][i];
+     }
+
   return x;
 }
 
@@ -53,4 +62,3 @@ int main()
   for (int i = 0; i < n; i++)
     printf("%f%c", x[i], ",]"[i == n - 1]);
 }
-
